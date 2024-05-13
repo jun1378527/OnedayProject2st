@@ -1,0 +1,60 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+header, nav, main, aside, footer {
+    padding: 20px;
+    color: white;
+}
+
+header {
+    background-color: #007BFF;
+    grid-area: header;
+}
+
+nav {
+    background-color: #6C757D;
+    grid-area: nav;
+}
+
+main {
+    background-color: #17A2B8;
+    grid-area: main;
+    min-height: 400px; /* 콘텐츠가 적을 때도 일정 높이 유지 */
+}
+
+aside {
+    background-color: #FFC107;
+    grid-area: sidebar;
+}
+
+footer {
+    background-color: #343A40;
+    grid-area: footer;
+}
+
+body {
+    display: grid;
+    grid-template-areas:
+        "header header"
+        "nav nav"
+        "main sidebar"
+        "footer footer";
+    grid-template-columns: 3fr 1fr; /* 메인 콘텐츠가 사이드바보다 넓게 */
+    grid-template-rows: auto; /* 각 행의 높이는 자동으로 설정 */
+    grid-gap: 10px; /* 그리드 사이 간격 */
+}
+
+@media (max-width: 768px) {
+    body {
+        grid-template-areas:
+            "header"
+            "nav"
+            "main"
+            "sidebar"
+            "footer";
+        grid-template-columns: 1fr;
+    }
+}
