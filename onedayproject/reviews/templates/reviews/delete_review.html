@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}리뷰 삭제{% endblock %}
+
+{% block content %}
+<main class="auth-container">
+    <h2>리뷰 삭제</h2>
+    <p>정말로 삭제하시겠습니까?</p>
+    <form method="post" action="{% url 'delete_review' review.pk %}">
+        {% csrf_token %}
+        <button type="submit">삭제</button>
+    </form>
+    <a href="{% url 'review_list' %}">취소</a>
+</main>
+{% endblock %}

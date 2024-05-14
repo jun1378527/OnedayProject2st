@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="{% url 'review_list' %}">
+                <img src="{% static 'images/coreview.jpg' %}" alt="CoReview Logo">
+            </a>
+        </div>
+        <div class="auth-buttons">
+            <a href="{% url 'login' %}"><button>로그인</button></a>
+        </div>
+    </header>
+    <main class="auth-container">
+        <h2>회원가입</h2>
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <form method="post" action="{% url 'signup' %}">
+            {% csrf_token %}
+            <div>
+                <label for="username">이름:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div>
+                <label for="password1">비밀번호:</label>
+                <input type="password" id="password1" name="password1" required>
+            </div>
+            <div>
+                <label for="password2">비밀번호 확인:</label>
+                <input type="password" id="password2" name="password2" required>
+            </div>
+            <button type="submit">회원가입</button>
+        </form>
+    </main>
+    <footer>
+        <p>CodeReview</p>
+        <p>대표: 고준기</p>
+        <p>전화번호: 010-1234-5678</p>
+        <p>위치: 서울특별시 강남구</p>
+        <p>설립일: 2024년</p>
+    </footer>
+</body>
+</html>

@@ -19,10 +19,13 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from reviews import views 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('reviews/', include('reviews.urls')),
+    path('binary_tree/', views.binary_tree, name='binary_tree'),
+    path('', views.home, name='home'),
 ]
 
 if settings.DEBUG:

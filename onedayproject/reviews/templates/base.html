@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Code Review Site{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="{% url 'review_list' %}">
+                <img src="{% static 'images/coreview.jpg' %}" alt="CoReview Logo">
+            </a>
+        </div>
+        <div class="auth-buttons">
+            {% if user.is_authenticated %}
+                <span>환영합니다, {{ user.username }}!</span>
+                <a href="{% url 'logout' %}"><button>로그아웃</button></a>
+            {% else %}
+                <a href="{% url 'signup' %}"><button>회원가입</button></a>
+                <a href="{% url 'login' %}"><button>로그인</button></a>
+            {% endif %}
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="{% url 'review_list' %}">리뷰 확인</a></li>
+            <li><a href="{% url 'graph_visualization' %}">알고리즘 시각화</a></li> <!-- 링크 추가 -->
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'create_review' %}">리뷰 작성하기</a></li>
+            {% endif %}
+            <!-- 다른 네비게이션 항목들 -->
+        </ul>
+    </nav>
+    {% block content %}
+    {% endblock %}
+    <footer>
+        <p>CodeReview</p>
+        <p>대표: 고준기</p>
+        <p>전화번호: 010-1234-5678</p>
+        <p>위치: 서울특별시 강남구</p>
+        <p>설립일: 2024년</p>
+    </footer>
+</body>
+</html>

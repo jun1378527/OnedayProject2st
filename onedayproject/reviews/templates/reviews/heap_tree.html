@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Heap Tree Visualization{% endblock %}
+
+{% block content %}
+<main class="auth-container">
+    <h2>힙 트리</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            <label for="elements">요소들을 입력하세요 (공백으로 구분)</label>
+            <input type="text" id="elements" name="elements" required>
+        </div>
+        <button type="submit">시각화</button>
+    </form>
+    {% if images %}
+    <div class="visualization">
+        {% for image in images %}
+        <img src="data:image/png;base64,{{ image }}" alt="Heap Tree Step">
+        {% endfor %}
+    </div>
+    {% endif %}
+</main>
+{% endblock %}

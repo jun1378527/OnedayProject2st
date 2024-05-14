@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="{% url 'review_list' %}">
+                <img src="{% static 'images/coreview.jpg' %}" alt="CoReview Logo">
+            </a>
+        </div>
+        <div class="auth-buttons">
+            <a href="{% url 'signup' %}"><button>회원가입</button></a>
+        </div>
+    </header>
+    <main class="auth-container">
+        <h2>로그인</h2>
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <div>
+                <label for="username">이름:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div>
+                <label for="password">비밀번호:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">로그인</button>
+        </form>
+    </main>
+    <footer>
+        <p>CodeReview</p>
+        <p>대표: 고준기</p>
+        <p>전화번호: 010-1234-5678</p>
+        <p>위치: 서울특별시 강남구</p>
+        <p>설립일: 2024년</p>
+    </footer>
+</body>
+</html>

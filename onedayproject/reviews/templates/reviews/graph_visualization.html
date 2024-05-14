@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Graph Visualization{% endblock %}
+
+{% block content %}
+<main class="auth-container">
+    <h2>그래프 시각화</h2>
+    <div class="algorithm-buttons">
+        <a href="{% url 'heap_tree' %}">
+            <button>힙 트리 시각화</button>
+        </a>
+        <a href="{% url 'binary_tree' %}">
+            <button>이진 트리 시각화</button>
+        </a>
+        <a href="{% url 'quick_sort' %}">
+            <button>퀵 정렬 시각화</button>
+        </a>
+    </div>
+</main>
+{% endblock %}

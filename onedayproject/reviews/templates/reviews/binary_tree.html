@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Binary Tree Visualization{% endblock %}
+
+{% block content %}
+<main class="auth-container">
+    <h2>이진 트리</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">시각화</button>
+    </form>
+    {% if images %}
+    <div class="visualization">
+        {% for image in images %}
+        <img src="data:image/png;base64,{{ image }}" alt="Binary Tree Step">
+        {% endfor %}
+    </div>
+    {% endif %}
+</main>
+{% endblock %}

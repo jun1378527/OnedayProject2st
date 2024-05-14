@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}리뷰 작성하기{% endblock %}
+
+{% block content %}
+<main class="auth-container">
+    <h2>리뷰 작성하기</h2>
+    <form method="post" action="{% url 'create_review' %}">
+        {% csrf_token %}
+        <div>
+            <label for="id_title">제목:</label>
+            {{ form.title }}
+        </div>
+        <div>
+            <label for="id_content">내용:</label>
+            {{ form.content }}
+        </div>
+        <button type="submit">리뷰 작성</button>
+    </form>
+</main>
+{% endblock %}

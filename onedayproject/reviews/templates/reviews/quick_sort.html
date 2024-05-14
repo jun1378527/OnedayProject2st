@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Quick Sort Visualization{% endblock %}
+
+{% block content %}
+<main class="auth-container">
+    <h2>퀵 정렬</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">시각화</button>
+    </form>
+    {% if images %}
+    <div class="visualization">
+        {% for image in images %}
+        <img src="data:image/png;base64,{{ image }}" alt="Quick Sort Step">
+        {% endfor %}
+    </div>
+    {% endif %}
+</main>
+{% endblock %}
