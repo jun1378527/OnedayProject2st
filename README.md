@@ -1,4 +1,5 @@
 # OnedayProject2st
+
 # Code Review and Algorithm Visualization Platform
 
 ## 프로젝트 설명
@@ -9,11 +10,12 @@
 
 - **프론트엔드**: HTML, CSS, JavaScript
 - **백엔드**: Python (Django)
-- **데이터베이스**: MongoDB
+- **데이터베이스**: SQLlite
 
 ## 기능
 
 1. **코드 업로드 및 리뷰**
+
    - 사용자는 자신의 코드를 업로드하고, 다른 사용자의 리뷰를 받을 수 있습니다.
    - 사용자 간의 피드백을 통해 코드 품질을 개선할 수 있습니다.
 
