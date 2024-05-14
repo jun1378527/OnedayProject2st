@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ review.title }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+    <header>Header</header>
+    <nav>Navigation</nav>
+    <main>
+        <h1>{{ review.title }}</h1>
+        <pre>{{ review.code }}</pre>
+        <p>{{ review.description }}</p>
+        <h2>Comments</h2>
+        <ul>
+            {% for comment in review.comments.all %}
+                <li>{{ comment.text }} - {{ comment.created_at }}</li>
+            {% endfor %}
+        </ul>
+    </main>
+    <aside>Side Bar</aside>
+    <footer>Footer</footer>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Review Site</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+    <header>
+        <div class="logo">CodeReview</div>
+        <div class="auth-buttons">
+            <button>Login</button>
+            <button>Sign Up</button>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#">리뷰 확인</a></li>
+            <li><a href="#">알고리즘 시각화</a></li>
+            <li><a href="#">기타 기능</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h1>Code Reviews</h1>
+        <ul>
+            {% for review in reviews %}
+                <li>
+                    <a href="{% url 'review_detail' review.pk %}">{{ review.title }}</a>
+                    <p>{{ review.description }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    </main>
+    <aside>
+        <div class="ad">
+            <img src="{% static 'images/ad1.jpg' %}" alt="Ad 1">
+        </div>
+        <div class="ad">
+            <img src="{% static 'images/ad2.jpg' %}" alt="Ad 2">
+        </div>
+        <div class="ad">
+            <img src="{% static 'images/ad3.jpg' %}" alt="Ad 3">
+        </div>
+    </aside>
+    <footer>
+        <p>CodeReview</p>
+        <p>대표: 고준기</p>
+        <p>전화번호: 010-1234-5678</p>
+        <p>위치: 서울특별시 강남구</p>
+        <p>설립일: 2024년</p>
+    </footer>
+</body>
+</html>
